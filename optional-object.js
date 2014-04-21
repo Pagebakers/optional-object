@@ -52,6 +52,10 @@ Schemas.banktransfer = new SimpleSchema({
   'number': {
     type: Number,
     label: 'Bank account number'
+  },
+  'confirmation': {
+    type: Boolean,
+    label: 'Confirmation'
   }
 });
 
