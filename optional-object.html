@@ -1,0 +1,68 @@
+<head>
+  <title>optional-object</title>
+</head>
+
+<body>
+  {{> form}}
+</body>
+
+<template name="form">
+  
+  <div class="container">
+
+    {{#autoForm collection="Orders" id="order"}}
+    
+      <h3>Payment method</h3>
+      
+      {{> afFieldInput name="paymentMethod" type="hidden" value=paymentMethod}}
+    
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" data-payment-method="creditcard">
+                Credit card
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              {{> creditcard}}
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" data-payment-method="banktransfer">
+                Bank transfer
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              {{> banktransfer}}
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <input type="submit" class="btn btn-primary" value="Submit" />
+    
+    {{/autoForm}}
+
+  </div>
+</template>
+
+<template name="creditcard">
+  {{> afQuickField name="creditcard.firstName"}}
+  {{> afQuickField name="creditcard.lastName"}}
+  {{> afQuickField name="creditcard.number"}}
+  {{> afQuickField name="creditcard.expirationDate"}}
+</template>
+
+<template name="banktransfer">
+  {{> afQuickField name="banktransfer.firstName"}}
+  {{> afQuickField name="banktransfer.lastName"}}
+  {{> afQuickField name="banktransfer.number"}}
+</template>
